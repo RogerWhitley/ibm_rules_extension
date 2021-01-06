@@ -1,0 +1,384 @@
+{
+    "fileTypes": ["rules"],
+    "name": "netcool.rules",
+    "patterns": [
+        {
+            "match": "^(#!.*)$",
+            "name": "meta.preprocessor.script.rules"
+        },
+        {
+            "begin": "^\\w*\\b(library|import|part of|part|export)\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.other.import.rules"
+                }
+            },
+            "end": ";",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.terminator.rules"
+                }
+            },
+            "name": "meta.declaration.rules",
+            "patterns": [{
+                    "include": "#strings"
+                },
+                {
+                    "include": "#comments"
+                },
+                {
+                    "match": "\\b(as|show|hide)\\b",
+                    "name": "keyword.other.import.rules"
+                }
+            ]
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#punctuation"
+        },
+        {
+            "include": "#annotations"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#constants-and-special-vars"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "rulesdoc": {
+            "patterns": [{
+                    "match": "(\\[.*?\\])",
+                    "captures": {
+                        "0": {
+                            "name": "variable.name.source.rules"
+                        }
+                    }
+                },
+                {
+                    "match": "^ {4,}(?![ \\*]).*",
+                    "captures": {
+                        "0": {
+                            "name": "variable.name.source.rules"
+                        }
+                    }
+                },
+                {
+                    "begin": "```.*?$",
+                    "end": "```",
+                    "contentName": "variable.other.source.rules"
+                },
+                {
+                    "match": "(`.*?`)",
+                    "captures": {
+                        "0": {
+                            "name": "variable.other.source.rules"
+                        }
+                    }
+                },
+                {
+                    "match": "(`.*?`)",
+                    "captures": {
+                        "0": {
+                            "name": "variable.other.source.rules"
+                        }
+                    }
+                },
+                {
+                    "match": "(\\* ((    ).*))$",
+                    "captures": {
+                        "2": {
+                            "name": "variable.other.source.rules"
+                        }
+                    }
+                },
+                {
+                    "match": "(\\*    .*)$"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [{
+                "captures": {
+                    "0": {
+                        "name": "punctuation.definition.comment.rules"
+                    }
+                },
+                "match": "#.*",
+                "name": "comment.line.number-sign.rules"
+            }]
+        },
+        "annotations": {
+            "patterns": [{
+                "match": "@[a-zA-Z_-]+",
+                "name": "storage.type.annotation.rules"
+            },{
+                "match": "%[a-zA-Z_-]+",
+                "name": "support.variable.annotation.rules"
+            }]
+        },
+        "constants-and-special-vars": {
+            "patterns": [{
+                    "match": "(?<!\\$)\\b(true|false|null)\\b(?!\\$)",
+                    "name": "constant.language.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(this|super)\\b(?!\\$)",
+                    "name": "variable.language.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b(?!\\$)",
+                    "name": "constant.numeric.rules"
+                },
+                {
+                    "match": "(?<![a-zA-Z0-9_$])([_$]*[A-Z][a-zA-Z0-9_$]*|bool\\b|num\\b|double\\b|dynamic\\b)",
+                    "name": "support.class.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(getdate|datetotime|timetodate)\\b(?!\\$)",
+                    "name": "support.function.time.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(discard|discarded|recover|remove)\\b(?!\\$)",
+                    "name": "support.function.element.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(getenv|gethostaddr|gethostname|getpid|getplatform|hostname)\\b(?!\\$)",
+                    "name": "support.function.host.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(int|real|toBase)\\b(?!\\$)",
+                    "name": "support.function.arithmetic.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(log|setlog)\\b(?!\\$)",
+                    "name": "support.function.logging.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(updateload|getload)\\b(?!\\$)",
+                    "name": "support.function.load.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(charcount|clear|contains|expand|extract|length|lower|ltrim|match|md5_hash|nmatch|nvp_add|nvp_remove|printable|regmatch|regreplace|rtrim|scanformat|split|substr|upper)\\b(?!\\$)",
+                    "name": "support.function.string.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(decimaltoascii|decimaltohex|hextimetostring|hextoascii|hextodecimal)\\b(?!\\$)",
+                    "name": "support.function.snmp.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(test|test|test|test|test|test)\\b(?!\\$)",
+                    "name": "support.function.test.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(details|exists|lookup|registertarget|genevent|service|update)\\b(?!\\$)",
+                    "name": "support.function.rules"
+                },
+                {
+                    "match": "([_$]*[a-z][a-zA-Z0-9_$]*)(<|\\(|\\s+=>)",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.rules"
+                        }
+                    }
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [{
+                    "match": "(?<!\\$)\\bas\\b(?!\\$)",
+                    "name": "keyword.cast.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(try|on|catch|finally|throw|rethrow)\\b(?!\\$)",
+                    "name": "keyword.control.catch-exception.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(break|case|continue|default|do|else|for|if|in|return|switch|while)\\b(?!\\$)",
+                    "name": "keyword.control.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(sync(\\*)?|async(\\*)?|await|yield(\\*)?)\\b(?!\\$)",
+                    "name": "keyword.control.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\bassert\\b(?!\\$)",
+                    "name": "keyword.control.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(new)\\b(?!\\$)",
+                    "name": "keyword.control.new.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(abstract|class|enum|extends|extension|external|factory|implements|get|mixin|native|operator|set|typedef|with|covariant)\\b(?!\\$)",
+                    "name": "keyword.declaration.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(is\\!?)\\b(?!\\$)",
+                    "name": "keyword.operator.rules"
+                },
+                {
+                    "match": "\\?|:",
+                    "name": "keyword.operator.ternary.rules"
+                },
+                {
+                    "match": "(!|&&|\\|\\||(?<!\\$)\\b(not|or|and|xor)\\b(?!\\$))",
+                    "name": "keyword.operator.logical.rules"
+                },
+                {
+                    "match": "(<<|>>>?|~|\\^|\\||&)",
+                    "name": "keyword.operator.bitwise.rules"
+                },
+                {
+                    "match": "((&|\\^|\\||<<|>>>?)=)",
+                    "name": "keyword.operator.assignment.bitwise.rules"
+                },
+                {
+                    "match": "(=>)",
+                    "name": "keyword.operator.closure.rules"
+                },
+                {
+                    "match": "(==|!=|<=?|>=?)",
+                    "name": "keyword.operator.comparison.rules"
+                },
+                {
+                    "match": "(([+*/%-]|\\~)=)",
+                    "name": "keyword.operator.assignment.arithmetic.rules"
+                },
+                {
+                    "match": "(=)",
+                    "name": "keyword.operator.assignment.rules"
+                },
+                {
+                    "match": "(\\-\\-|\\+\\+)",
+                    "name": "keyword.operator.increment-decrement.rules"
+                },
+                {
+                    "match": "(\\-|\\+|\\*|\\/|\\~\\/|%)",
+                    "name": "keyword.operator.arithmetic.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(static|final|const|required|late)\\b(?!\\$)",
+                    "name": "storage.modifier.rules"
+                },
+                {
+                    "match": "(?<!\\$)\\b(?:void|var)\\b(?!\\$)",
+                    "name": "storage.type.primitive.rules"
+                }
+            ]
+        },
+        "string-interp": {
+            "patterns": [{
+                    "captures": {
+                        "2": {
+                            "name": "variable.parameter.rules"
+                        },
+                        "3": {
+                            "name": "variable.parameter.rules"
+                        }
+                    },
+                    "match": "\\$((\\w+)|\\{([^{}]+)\\})|^\\$(\\w+)"
+                },
+                {
+                    "match": "\\\\.",
+                    "name": "constant.character.escape.rules"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [{
+                    "begin": "(?<!r)\"\"\"",
+                    "end": "\"\"\"(?!\")",
+                    "name": "string.interpolated.triple.double.rules",
+                    "patterns": [{
+                        "include": "#string-interp"
+                    }]
+                },
+                {
+                    "begin": "(?<!r)'''",
+                    "end": "'''(?!')",
+                    "name": "string.interpolated.triple.single.rules",
+                    "patterns": [{
+                        "include": "#string-interp"
+                    }]
+                },
+                {
+                    "begin": "r\"\"\"",
+                    "end": "\"\"\"(?!\")",
+                    "name": "string.quoted.triple.double.rules"
+                },
+                {
+                    "begin": "r'''",
+                    "end": "'''(?!')",
+                    "name": "string.quoted.triple.single.rules"
+                },
+                {
+                    "begin": "(?<!\\|r)\"",
+                    "end": "\"",
+                    "name": "string.interpolated.double.rules",
+                    "patterns": [{
+                            "match": "\\n",
+                            "name": "invalid.string.newline"
+                        },
+                        {
+                            "include": "#string-interp"
+                        }
+                    ]
+                },
+                {
+                    "begin": "r\"",
+                    "end": "\"",
+                    "name": "string.quoted.double.rules",
+                    "patterns": [{
+                        "match": "\\n",
+                        "name": "invalid.string.newline"
+                    }]
+                },
+                {
+                    "begin": "(?<!\\|r)'",
+                    "end": "'",
+                    "name": "string.interpolated.single.rules",
+                    "patterns": [{
+                            "match": "\\n",
+                            "name": "invalid.string.newline"
+                        },
+                        {
+                            "include": "#string-interp"
+                        }
+                    ]
+                },
+                {
+                    "begin": "r'",
+                    "end": "'",
+                    "name": "string.quoted.single.rules",
+                    "patterns": [{
+                        "match": "\\n",
+                        "name": "invalid.string.newline"
+                    }]
+                }
+            ]
+        },
+        "punctuation": {
+            "patterns": [{
+                    "match": ",",
+                    "name": "punctuation.comma.rules"
+                },
+                {
+                    "match": ";",
+                    "name": "punctuation.terminator.rules"
+                },
+                {
+                    "match": "\\.",
+                    "name": "punctuation.dot.rules"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.rules"
+}

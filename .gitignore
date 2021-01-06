@@ -1,0 +1,16 @@
+.DS_Store
+.packages
+.pub/
+.test_results/
+.vscode-test/
+.vscode/.browse.VC.db*
+*.log
+build/
+coverage/
+ios/.generated/
+logs/
+node_modules/
+out/
+pubspec.lock
+Generated.xcconfig
+*.vsix

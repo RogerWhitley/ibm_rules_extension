@@ -1,0 +1,43 @@
+{
+    "name": "netcool-rules",
+    "displayName": "rules",
+    "description": "Rules file (.rules) highlighting for IBM Tivoli Netcool.",
+    "version": "0.0.1",
+    "publisher": "thegreatsardini",
+    "license": "License in LICENSE.md",
+    "icon": "assets/rules-logo.gif",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "bugs": {
+        "url": "https://github.com/TheGreatSardini/ibm_rules_extension/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TheGreatSardini/ibm_rules_extension.git"
+    },
+    "keywords": [
+        "rules",
+        "ibm",
+        "objectserver",
+        "probes",
+        "netcool",
+        "tivoli"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "rules",
+            "aliases": ["netcool.rules", "rules"],
+            "extensions": [".rules"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "rules",
+            "scopeName": "source.rules",
+            "path": "./syntaxes/rules.tmLanguage.json"
+        }]
+    }
+}
