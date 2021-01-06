@@ -1,17 +1,24 @@
 {
     "name": "netcool-rules",
     "displayName": "rules",
-    "description": "IBM Netcool .rules file language highlighting.",
     "version": "0.0.1",
     "publisher": "thegreatsardini",
-    "license": "License in LICENSE.md",
-    "icon": "assets/rules.png",
-    "engines": {
-        "vscode": "^1.52.0"
+    "description": "IBM Netcool .rules file language highlighting.",
+    "author": {
+        "name": "thegreatsardini"
     },
     "categories": [
         "Programming Languages"
     ],
+    "icon": "assets/rules-logo.png",
+    "galleryBanner": {
+        "color": "#71625C",
+        "theme": "light"
+    },
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "license": "SEE LICENSE IN LICENSE.md",
     "bugs": {
         "url": "https://github.com/TheGreatSardini/ibm_rules_extension/issues"
     },
