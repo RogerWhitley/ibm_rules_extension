@@ -5,6 +5,7 @@ This Language extension is designed to provide syntax hylighting for IBM Netcool
 ## Features
 - Syntax Highlighting for .rules files.
 ![Syntax Hilighting](assets/highlighting.png)
+![Icon](assets/rules.png)
 
 Added as many known functions and operators as I could locate including the ones found here:
 https://www.ibm.com/support/knowledgecenter/SSSHTQ_8.1.0/com.ibm.netcool_OMNIbus.doc_8.1.0/omnibus/wip/probegtwy/reference/omn_prb_rulesfilefncs.html

@@ -52,57 +52,6 @@
         }
     ],
     "repository": {
-        "rulesdoc": {
-            "patterns": [{
-                    "match": "(\\[.*?\\])",
-                    "captures": {
-                        "0": {
-                            "name": "variable.name.source.rules"
-                        }
-                    }
-                },
-                {
-                    "match": "^ {4,}(?![ \\*]).*",
-                    "captures": {
-                        "0": {
-                            "name": "variable.name.source.rules"
-                        }
-                    }
-                },
-                {
-                    "begin": "```.*?$",
-                    "end": "```",
-                    "contentName": "variable.other.source.rules"
-                },
-                {
-                    "match": "(`.*?`)",
-                    "captures": {
-                        "0": {
-                            "name": "variable.other.source.rules"
-                        }
-                    }
-                },
-                {
-                    "match": "(`.*?`)",
-                    "captures": {
-                        "0": {
-                            "name": "variable.other.source.rules"
-                        }
-                    }
-                },
-                {
-                    "match": "(\\* ((    ).*))$",
-                    "captures": {
-                        "2": {
-                            "name": "variable.other.source.rules"
-                        }
-                    }
-                },
-                {
-                    "match": "(\\*    .*)$"
-                }
-            ]
-        },
         "comments": {
             "patterns": [{
                 "captures": {

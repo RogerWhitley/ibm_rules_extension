@@ -1,11 +1,11 @@
 {
     "name": "netcool-rules",
     "displayName": "rules",
-    "description": "Rules file (.rules) highlighting for IBM Tivoli Netcool.",
+    "description": "IBM Netcool .rules file language highlighting.",
     "version": "0.0.1",
     "publisher": "thegreatsardini",
     "license": "License in LICENSE.md",
-    "icon": "assets/rules-logo.gif",
+    "icon": "assets/rules.png",
     "engines": {
         "vscode": "^1.52.0"
     },
